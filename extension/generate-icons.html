@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generate Extension Icons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #0B1120;
+      color: white;
+    }
+    canvas {
+      border: 1px solid #333;
+      margin: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #6366F1;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background: #4ADE80;
+    }
+  </style>
+</head>
+<body>
+  <h1>Resonate Hunter - Icon Generator</h1>
+  <p>Click "Generate Icons" to create placeholder icons for the extension.</p>
+  <button onclick="generateIcons()">Generate Icons</button>
+  <div id="canvases"></div>
+  <p><strong>Instructions:</strong> Right-click each canvas and "Save image as..." to save as PNG files in the icons/ folder.</p>
+
+  <script>
+    function generateIcons() {
+      const sizes = [16, 48, 128];
+      const container = document.getElementById('canvases');
+      container.innerHTML = '';
+
+      sizes.forEach(size => {
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        canvas.id = `icon${size}`;
+        container.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        
+        // Draw green circle (RezPulse)
+        ctx.fillStyle = '#4ADE80';
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2 - 2, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Add glow effect
+        ctx.shadowBlur = size / 4;
+        ctx.shadowColor = '#4ADE80';
+        ctx.fill();
+        
+        // Add "RH" text for larger icons
+        if (size >= 48) {
+          ctx.fillStyle = '#0B1120';
+          ctx.font = `bold ${size / 3}px Arial`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('RH', size / 2, size / 2);
+        }
+      });
+    }
+
+    // Auto-generate on load
+    window.onload = generateIcons;
+  </script>
+</body>
+</html>
+
+

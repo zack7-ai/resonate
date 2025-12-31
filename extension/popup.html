@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resonate Hunter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div class="rez-pulse-container">
+          <div class="rez-pulse"></div>
+        </div>
+        <h1 class="title">Resonate Hunter</h1>
+      </div>
+      <div class="status">
+        <span class="status-dot"></span>
+        <span class="status-text">Connected to Command Center</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <p class="description">
+        Capture job descriptions and send them directly to your Command Center dashboard.
+      </p>
+      
+      <button id="captureBtn" class="capture-button">
+        <span class="button-icon">🎯</span>
+        <span class="button-text">Capture Target</span>
+      </button>
+
+      <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <button id="dashboardBtn" class="dashboard-link">
+        Open Dashboard →
+      </button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
