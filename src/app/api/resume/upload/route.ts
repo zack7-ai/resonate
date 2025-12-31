@@ -42,7 +42,6 @@ export async function POST(req: Request) {
     const buffer = Buffer.from(arrayBuffer);
 
     // Extract text from PDF (use require for CommonJS module)
-    // @ts-expect-error - pdf-parse is a CommonJS module without proper ESM exports
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const pdfParse = require('pdf-parse');
     const pdfData = await pdfParse(buffer);
