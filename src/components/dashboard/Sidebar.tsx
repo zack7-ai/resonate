@@ -6,50 +6,44 @@ import {
   LayoutDashboard,
   FileText,
   Settings,
-  LogOut,
   Briefcase,
   TrendingUp,
-  CreditCard,
-  Search,
-  Mail,
-  MessageSquare,
-  Target,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import Logo from "@/components/ui/Logo";
 import { UserButton } from "@clerk/nextjs";
 
-const routes = [
-  {
-    href: "/dashboard",
-    label: "Overview",
-    icon: <LayoutDashboard className="h-5 w-5" />,
-  },
-  {
-    href: "/dashboard/jobs",
-    label: "Active Operations",
-    icon: <Briefcase className="h-5 w-5" />,
-  },
-  {
-    href: "/resume/builder",
-    label: "Resume Studio",
-    icon: <FileText className="h-5 w-5" />,
-  },
-  {
-    href: "/dashboard/report",
-    label: "Market Intelligence",
-    icon: <TrendingUp className="h-5 w-5" />,
-  },
-  {
-    href: "/dashboard/settings",
-    label: "Settings",
-    icon: <Settings className="h-5 w-5" />,
-  },
-];
-
 export default function Sidebar() {
   const pathname = usePathname();
+
+  const routes = [
+    {
+      href: "/dashboard",
+      label: "Overview",
+      icon: <LayoutDashboard className="h-5 w-5" />,
+    },
+    {
+      href: "/dashboard/jobs",
+      label: "Active Operations",
+      icon: <Briefcase className="h-5 w-5" />,
+    },
+    {
+      href: "/resume/builder",
+      label: "Resume Studio",
+      icon: <FileText className="h-5 w-5" />,
+    },
+    {
+      href: "/dashboard/report",
+      label: "Market Intelligence",
+      icon: <TrendingUp className="h-5 w-5" />,
+    },
+    {
+      href: "/dashboard/settings",
+      label: "Settings",
+      icon: <Settings className="h-5 w-5" />,
+    },
+  ];
 
   return (
     <div className="flex h-full flex-col border-r bg-card text-card-foreground">
