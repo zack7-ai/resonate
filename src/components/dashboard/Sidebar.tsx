@@ -14,13 +14,19 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import Logo from "@/components/ui/Logo";
 import { UserButton } from "@clerk/nextjs";
 
-const routeConfig = [
+interface RouteConfig {
+  href: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const routeConfig: RouteConfig[] = [
   { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
   { href: "/dashboard/jobs", label: "Active Operations", icon: Briefcase },
   { href: "/resume/builder", label: "Resume Studio", icon: FileText },
   { href: "/dashboard/report", label: "Market Intelligence", icon: TrendingUp },
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
-] as const;
+];
 
 export default function Sidebar() {
   const pathname = usePathname();
