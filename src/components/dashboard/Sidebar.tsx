@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  Search, 
-  FileText, 
-  Mail, 
+import {
+  LayoutDashboard,
+  Search,
+  FileText,
+  Mail,
   MessageSquare,
   Target,
   LogOut,
   Settings,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import Logo from "@/components/ui/Logo";
