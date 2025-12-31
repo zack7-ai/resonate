@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-import Sidebar from "@/components/dashboard/Sidebar";
+import Sidebar from "@/components/dashboard/AppSidebar";
 import MobileNav from "@/components/dashboard/MobileNav";
 
 export default function DashboardLayout({
