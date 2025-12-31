@@ -42,7 +42,8 @@ export async function POST(req: Request) {
     const buffer = Buffer.from(arrayBuffer);
 
     // Extract text from PDF (use require for CommonJS module)
-    // @ts-ignore - pdf-parse is a CommonJS module without proper ESM exports
+    // @ts-expect-error - pdf-parse is a CommonJS module without proper ESM exports
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const pdfParse = require('pdf-parse');
     const pdfData = await pdfParse(buffer);
     const rawText = pdfData.text;
@@ -155,7 +156,7 @@ Rules:
       linkedin: parsedData.linkedin || '',
       website: parsedData.website || '',
       summary: parsedData.summary || '',
-      experience: (parsedData.experience || []).map((exp: any, index: number) => ({
+      experience: (parsedData.experience || []).map((exp: { company?: string; title?: string; location?: string; startDate?: string; endDate?: string; description?: string[] }, index: number) => ({
         id: `exp-${Date.now()}-${index}`,
         company: exp.company || '',
         title: exp.title || '',
@@ -164,7 +165,7 @@ Rules:
         endDate: exp.endDate || '',
         description: Array.isArray(exp.description) ? exp.description : [],
       })),
-      education: (parsedData.education || []).map((edu: any, index: number) => ({
+      education: (parsedData.education || []).map((edu: { school?: string; degree?: string; field?: string; location?: string; startDate?: string; endDate?: string }, index: number) => ({
         id: `edu-${Date.now()}-${index}`,
         school: edu.school || '',
         degree: edu.degree || '',

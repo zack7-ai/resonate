@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
+import { Experience } from '@/stores/useResumeStore';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY!,
@@ -48,7 +49,7 @@ Company: ${resumeData.experience?.[0]?.company || 'Not specified'}
 Summary: ${resumeData.summary || 'No summary provided'}
 
 Key Experience:
-${resumeData.experience?.slice(0, 3).map((exp: any) => `
+${resumeData.experience?.slice(0, 3).map((exp: Experience) => `
 - ${exp.title} at ${exp.company}: ${exp.description?.slice(0, 2).join(' ') || ''}
 `).join('\n') || 'No experience listed'}
 

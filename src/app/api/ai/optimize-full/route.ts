@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { ResumeData } from '@/stores/useResumeStore';
+import { ResumeData, Experience } from '@/stores/useResumeStore';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY!,
@@ -61,7 +61,7 @@ Name: ${currentResume.name || ''}
 Summary: ${currentResume.summary || ''}
 
 Experience:
-${currentResume.experience?.slice(0, 3).map((exp: any, idx: number) => `
+${currentResume.experience?.slice(0, 3).map((exp: Experience, idx: number) => `
 [${idx}] ${exp.title} at ${exp.company}
 Bullets:
 ${exp.description?.join('\n') || ''}
@@ -107,8 +107,8 @@ ${jobDescription}
     const optimizedResume: ResumeData = {
       ...currentResume,
       summary: optimizationResult.optimizedSummary || currentResume.summary,
-      experience: currentResume.experience?.map((exp: any, idx: number) => {
-        const optimization = optimizationResult.optimizedExperience?.find((opt: any) => opt.index === idx);
+      experience: currentResume.experience?.map((exp: Experience, idx: number) => {
+        const optimization = optimizationResult.optimizedExperience?.find((opt: { index: number; optimizedBullets?: string[] }) => opt.index === idx);
         if (optimization && optimization.optimizedBullets) {
           return {
             ...exp,
